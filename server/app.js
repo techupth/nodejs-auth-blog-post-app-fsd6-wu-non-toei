@@ -4,6 +4,9 @@ import cors from "cors";
 import postRouter from "./apps/posts.js";
 import authRouter from "./apps/auth.js";
 import { client } from "./utils/db.js";
+import dotenv from "dotenv"
+
+dotenv.config()
 
 async function init() {
   const app = express();
@@ -14,7 +17,7 @@ async function init() {
   app.use(cors());
   app.use(bodyParser.json());
   app.use("/posts", postRouter);
-  app.use("/register", authRouter);
+  app.use("/", authRouter);
 
   app.get("/", (req, res) => {
     res.send("Hello World!");
@@ -23,6 +26,8 @@ async function init() {
   app.get("*", (req, res) => {
     res.status(404).send("Not found");
   });
+
+  
 
   app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
