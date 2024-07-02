@@ -74,7 +74,7 @@ function HomePage() {
           </label>
         </div>
       </div>
-      {/* <div className="board">
+      <div className="board">
         {!posts.length && (
           <div className="no-blog-posts-container">
             <h1>No Blog Posts</h1>
@@ -112,7 +112,7 @@ function HomePage() {
         })}
         {isError ? <h1>Request failed</h1> : null}
         {isLoading ? <h1>Loading ....</h1> : null}
-      </div> */}
+      </div>
 
       <div className="pagination">
         {page > 1 ? (

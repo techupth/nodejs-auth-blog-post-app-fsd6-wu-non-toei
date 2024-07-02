@@ -6,7 +6,7 @@ function jwtInterceptor() {
     //  ให้เขียน Logic ในการแนบ Token เข้าไปใน Header ของ Request
     // เมื่อมีการส่ง Request จาก Client ไปหา Server
     // ภายใน Callback Function axios.interceptors.request.use
-    const token = Boolean(window.localStorage.getItem("token"));
+    const token = window.localStorage.getItem("token");
 
     if (token) {
       req.headers = {
@@ -33,7 +33,7 @@ function jwtInterceptor() {
         response.statusText === "Unauthorized"
       ) {
         window.localStorage.removeItem("token");
-        window.location.replace("/login");
+        window.location.replace("/");
       }
 
       return Promise.reject(error);
